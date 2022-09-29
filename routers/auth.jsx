@@ -7,6 +7,17 @@ const bcrypt = require("bcrypt");
 
 const router = new Router();
 
+router.get("/me", authMiddleware, async (req, res, next) => {
+  try {
+    const user = await User.findAll();
+    const response = user.data;
+    console.log("backend::", user);
+    res.send(user);
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     const { email, password } = req.body;
