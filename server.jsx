@@ -7,6 +7,7 @@ const categoryRouter = require("./routers/category.jsx");
 const commentRouter = require("./routers/comment.jsx");
 const userRouter = require("./routers/user.jsx");
 const authRouter = require("./routers/auth.jsx");
+const ordersRouter = require("./routers/order.jsx");
 
 app.use(express.json());
 app.use(cors());
@@ -16,6 +17,7 @@ app.use("/categories", categoryRouter);
 app.use("/comments", commentRouter);
 app.use("/users", userRouter);
 app.use("/login", authRouter);
+app.use("/orders", ordersRouter);
 
 app.get("/test", async (req, res) => {
   console.log("testing server ok");
