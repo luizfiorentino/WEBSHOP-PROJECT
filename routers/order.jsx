@@ -15,10 +15,10 @@ router.post("/", async (req, res, next) => {
   try {
     const { userId, totalToPay, orderNumber, whetherPaid } = req.body;
     const newOrder = await Order.create({
-      userId,
-      totalToPay,
-      orderNumber,
-      whetherPaid,
+      userId: parseInt(userId),
+      totalToPay: parseInt(totalToPay),
+      orderNumber: parseInt(orderNumber),
+      whetherPaid: false, //hardcoded for now
     });
     if (!totalToPay || !userId || !orderNumber) {
       res
