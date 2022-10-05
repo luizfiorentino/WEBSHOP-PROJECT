@@ -10,32 +10,35 @@ router.get("/", async (req, res, next) => {
     });
     //res.send({ count, rows });
 
-    const page = parseInt(req.query.page);
-    const limit = parseInt(req.query.limit);
-    console.log("from server: page and limit", page, limit);
+    // const page = parseInt(req.query.page);
+    // const limit = parseInt(req.query.limit);
+    // console.log("from server: page and limit", page, limit);
 
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
+    // const startIndex = (page - 1) * limit;
+    // const endIndex = page * limit;
+    // page 1: startIndex= 0, endIndex=5
+    // page 2: startIndex= 5, endIndex=10
+    // page 3: startIndex= 10, endIndex=15
 
     //const resultProducts = model.slice(startIndex, endIndex);
-    const results = {};
+    // const results = {};
 
-    if (endIndex > 0) {
-      results.previous = {
-        page: page - 1,
-        limit: limit,
-      };
-    }
+    // if (startIndex > 0) {
+    //   results.previous = {
+    //     page: page - 1,
+    //     limit: limit,
+    //   };
+    // }
 
-    if (endIndex < Product.length) {
-      results.next = {
-        page: page + 1,
-        limit: limit,
-      };
-    }
+    // if (endIndex < Product.length) {
+    //   results.next = {
+    //     page: page + 1,
+    //     limit: limit,
+    //   };
+    // }
 
-    const resultProducts = allProducts.slice(startIndex, endIndex);
-    res.json(resultProducts);
+    // const resultProducts = allProducts.slice(startIndex, endIndex);
+    res.json(allProducts);
   } catch (e) {
     next(e);
   }
